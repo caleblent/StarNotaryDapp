@@ -35,6 +35,13 @@ const App = {
     await createStar(name, id).send({ from: this.account })
     App.setStatus("New Star Owner is " + this.account + ".")
   },
+
+  lookupStar: async function () {
+    const { lookupStarInfo } = this.meta.methods
+    const id = document.getElementById("tokenId").value
+    let name = await lookupStarInfo(id).call()
+    App.setStatus("The Star with this ID is called: " + name + ".")
+  },
 }
 
 window.App = App
