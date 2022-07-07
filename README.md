@@ -10,3 +10,5 @@ Token Name: "Star Notary Token"
 Token Symbol: "SNT"
 
 Token Address: 0xf83092e50c80633F6edE6603068b2a077e2040DE
+
+.secret, .gitignore, .gitattributes, node_modules, and .vscode folders and files ignored
