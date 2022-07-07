@@ -46,4 +46,21 @@ contract StarNotary is ERC721 {
         }
     }
 
+    function lookUptokenIdToStarInfo(uint256 tokenId) public view returns (string memory) {
+        // uses compareStrings() method to compare the tokenId name that returns with the empty string
+        // if a star with the token Id does not exist, then it will return true (cuz it will equal "")
+        // We want this to evaluate to false (if it exists), so the opposite is taken as an argument
+        // in the require() function (by using the ! operator)
+        require(!compareStrings(tokenIdToStarInfo[tokenId].name, ""), "A star with this token ID does not exist"); 
+
+        // if the value exists in the first place, it will now return this value
+        return tokenIdToStarInfo[tokenId].name;
+    }
+
+    function compareStrings(string memory a, string memory b) internal pure returns (bool) {
+        return (keccak256(abi.encodePacked((a))) == keccak256(abi.encodePacked((b))));
+    }
+
+
+
 }
