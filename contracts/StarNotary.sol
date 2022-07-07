@@ -4,11 +4,12 @@ import "../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol"
 
 contract StarNotary is ERC721 {
 
-    string public symbol = "SNT"; // SNT = Star Notary Token
-
     struct Star {
         string name;
     }
+
+    string public constant name = "Star Notary Token";
+    string public constant symbol = "SNT"; // SNT = Star Notary Token 
 
     mapping(uint256 => Star) public tokenIdToStarInfo;
     mapping(uint256 => uint256) public starsForSale;
