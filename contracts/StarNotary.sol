@@ -61,6 +61,16 @@ contract StarNotary is ERC721 {
         return (keccak256(abi.encodePacked((a))) == keccak256(abi.encodePacked((b))));
     }
 
+    function exchangeStars(uint256 _tokenId1, uint256 _tokenId2) public {
+        address owner1Address = ownerOf(_tokenId1);
+        address owner2Address = ownerOf(_tokenId2);
 
+        // check to see if both tokens have the same owner
+        require(owner1Address != owner2Address, "These tokens are both owned by the same owner");
+
+        // swap the stars using _transferFrom()
+        _transferFrom(owner1Address, owner2Address, _tokenId1);
+        _transferFrom(owner2Address, owner1Address, _tokenId2);
+    }
 
 }
